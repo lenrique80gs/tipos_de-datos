@@ -1,0 +1,60 @@
+# Importamos la librería math para poder utilizar el valor de pi
+import math
+
+
+# Función para calcular el área de un círculo
+def calcular_area_circulo(radio: float) -> float:
+    """
+    Calcula el área de un círculo dado su radio.
+
+    Parámetros:
+    radio (float): El radio del círculo.
+
+    Retorna:
+    float: El área del círculo.
+    """
+    area = math.pi * radio ** 2  # Fórmula para calcular el área
+    return area
+
+
+# Función para convertir metros a centímetros
+def convertir_metros_a_centimetros(metros: float) -> float:
+    """
+    Convierte metros a centímetros.
+
+    Parámetros:
+    metros (float): El valor en metros a convertir.
+
+    Retorna:
+    float: El valor convertido a centímetros.
+    """
+    return metros * 100  # 1 metro = 100 centímetros
+
+
+# Función principal que controla el flujo del programa
+def main():
+    # Solicitar al usuario el radio del círculo
+    radio_usuario = float(input("Introduce el radio del círculo en metros: "))
+
+    # Calcular el área utilizando la función calcular_area_circulo
+    area = calcular_area_circulo(radio_usuario)
+
+    # Mostrar el área del círculo
+    print(f"El área del círculo con radio {radio_usuario} metros es: {area:.2f} metros cuadrados.")
+
+    # Convertir el radio a centímetros
+    radio_centimetros = convertir_metros_a_centimetros(radio_usuario)
+    print(f"El radio del círculo en centímetros es: {radio_centimetros} cm.")
+
+    # Preguntar si el usuario quiere realizar otra operación
+    otra_operacion = input("¿Quieres realizar otra operación? (sí/no): ").strip().lower()
+
+    if otra_operacion == "sí":
+        main()  # Llamar a la función principal nuevamente
+    else:
+        print("Gracias por usar el programa.")
+
+
+# Verificar si este archivo está siendo ejecutado directamente
+if __name__ == "__main__":
+    main()  # Ejecutar la función principal
