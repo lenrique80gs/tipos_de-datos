@@ -1,0 +1,82 @@
+ Función para agregar una nueva pieza al inventario
+def agregar_pieza(inventario: dict, nombre_pieza: str, cantidad: int, precio_unitario: float):
+    """
+    Agrega una pieza al inventario.
+
+    Parámetros:
+    inventario (dict): Diccionario que contiene el inventario de piezas.
+    nombre_pieza (str): Nombre de la pieza a agregar.
+    cantidad (int): Cantidad de piezas a agregar.
+    precio_unitario (float): Precio de una sola pieza.
+
+    Retorna:
+    dict: El inventario actualizado con la nueva pieza.
+    """
+    inventario[nombre_pieza] = {'cantidad': cantidad, 'precio_unitario': precio_unitario}
+    print(f"{cantidad} unidades de {nombre_pieza} han sido agregadas al inventario.")
+
+
+# Función para consultar el inventario de una pieza específica
+def consultar_pieza(inventario: dict, nombre_pieza: str):
+    """
+    Consulta el inventario de una pieza específica.
+
+    Parámetros:
+    inventario (dict): Diccionario con el inventario de piezas.
+    nombre_pieza (str): Nombre de la pieza a consultar.
+
+    Retorna:
+    dict: Información sobre la pieza (cantidad y precio).
+    """
+    if nombre_pieza in inventario:
+        pieza = inventario[nombre_pieza]
+        print(f"Pieza: {nombre_pieza}")
+        print(f"Cantidad: {pieza['cantidad']}")
+        print(f"Precio Unitario: ${pieza['precio_unitario']:.2f}")
+    else:
+        print(f"La pieza {nombre_pieza} no está en el inventario.")
+
+
+# Función para eliminar una pieza del inventario
+def eliminar_pieza(inventario: dict, nombre_pieza: str):
+    """
+    Elimina una pieza del inventario.
+
+    Parámetros:
+    inventario (dict): Diccionario con el inventario de piezas.
+    nombre_pieza (str): Nombre de la pieza a eliminar.
+
+    Retorna:
+    dict: El inventario actualizado después de la eliminación.
+    """
+    if nombre_pieza in inventario:
+        del inventario[nombre_pieza]
+        print(f"La pieza {nombre_pieza} ha sido eliminada del inventario.")
+    else:
+        print(f"La pieza {nombre_pieza} no se encuentra en el inventario.")
+
+
+# Función principal
+def main():
+    # Inventario inicial de piezas de repuesto
+    inventario = {}
+
+    # Agregar algunas piezas iniciales al inventario
+    agregar_pieza(inventario, "Filtro de aceite", 20, 12.99)
+    agregar_pieza(inventario, "Bujías", 15, 5.50)
+    agregar_pieza(inventario, "Pastillas de freno", 10, 25.00)
+
+    # Consultar el inventario de una pieza específica
+    consultar_pieza(inventario, "Filtro de aceite")
+    consultar_pieza(inventario, "Bujías")
+
+    # Eliminar una pieza del inventario
+    eliminar_pieza(inventario, "Pastillas de freno")
+
+    # Consultar el inventario después de eliminar una pieza
+    consultar_pieza(inventario, "Pastillas de freno")
+
+
+# Verificar si este archivo está siendo ejecutado directamente
+if __name__ == "__main__":
+    main()  # Ejecutar la función principal
